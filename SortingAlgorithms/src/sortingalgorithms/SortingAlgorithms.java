@@ -7,7 +7,7 @@ public class SortingAlgorithms {
     public static void main(String[] args) {
         SortingAlgorithms Object = new SortingAlgorithms();
         /*
-            1000 size array
+            1000 sized array
         */
         System.out.println("-------------------------------------------- ");
         System.out.println("    1000 sized array sorting times.");
@@ -29,12 +29,12 @@ public class SortingAlgorithms {
                 timeArrayOneMergeStart) + 
                 " miliseconds to sort arrayOne with mergeSort Algorithm.");
         /*
-            10000 size array
+            10000 sized array
         */
         System.out.println("-------------------------------------------- ");
         System.out.println("    10000 sized array sorting times.");
         System.out.println("-------------------------------------------- ");
-        int[] arrayTwo = Object.randomArrayCreator(1000);
+        int[] arrayTwo = Object.randomArrayCreator(10000);
         long timeArrayTwoInsertionStart = System.nanoTime()/1000;
         int[] insertionSortedArrayTwo = Object.insertionSort(arrayTwo);
         long timeArrayTwoInsertionEnd = System.nanoTime()/1000;
@@ -44,7 +44,7 @@ public class SortingAlgorithms {
                 " miliseconds to sort arrayTwo with insertionSort Algorithm.");
         long timeArrayTwoMergeStart = System.nanoTime()/1000;
         int[] mergeSortedArrayTwo = Object.mergeSort(arrayTwo, 1, 
-                arrayOne.length);
+                arrayTwo.length);
         long timeArrayTwoMergeEnd = System.nanoTime()/1000;
         Object.printArray(mergeSortedArrayTwo);
         System.out.println("It took " + (timeArrayTwoMergeEnd - 
