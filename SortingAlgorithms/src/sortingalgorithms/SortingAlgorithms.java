@@ -6,13 +6,51 @@ public class SortingAlgorithms {
 
     public static void main(String[] args) {
         SortingAlgorithms Object = new SortingAlgorithms();
-        int[] arrayOne = Object.randomArrayCreator(4);
-        int[] arrayTwo = Object.randomArrayCreator(4);
+        /*
+            1000 size array
+        */
+        System.out.println("-------------------------------------------- ");
+        System.out.println("    1000 sized array sorting times.");
+        System.out.println("-------------------------------------------- ");
+        int[] arrayOne = Object.randomArrayCreator(1000);
+        long timeArrayOneInsertionStart = System.nanoTime()/1000;
         int[] insertionSortedArrayOne = Object.insertionSort(arrayOne);
-        int[] mergeSortedArrayOne = Object.mergeSort(arrayTwo, 1, 
-                arrayOne.length);
+        long timeArrayOneInsertionEnd = System.nanoTime()/1000;
         Object.printArray(insertionSortedArrayOne);
+        System.out.println("It took " + (timeArrayOneInsertionEnd - 
+                timeArrayOneInsertionStart) + 
+                " miliseconds to sort arrayOne with insertionSort Algorithm.");
+        long timeArrayOneMergeStart = System.nanoTime()/1000;
+        int[] mergeSortedArrayOne = Object.mergeSort(arrayOne, 1, 
+                arrayOne.length);
+        long timeArrayOneMergeEnd = System.nanoTime()/1000;
         Object.printArray(mergeSortedArrayOne);
+        System.out.println("It took " + (timeArrayOneMergeEnd - 
+                timeArrayOneMergeStart) + 
+                " miliseconds to sort arrayOne with mergeSort Algorithm.");
+        /*
+            10000 size array
+        */
+        System.out.println("-------------------------------------------- ");
+        System.out.println("    10000 sized array sorting times.");
+        System.out.println("-------------------------------------------- ");
+        int[] arrayTwo = Object.randomArrayCreator(1000);
+        long timeArrayTwoInsertionStart = System.nanoTime()/1000;
+        int[] insertionSortedArrayTwo = Object.insertionSort(arrayTwo);
+        long timeArrayTwoInsertionEnd = System.nanoTime()/1000;
+        Object.printArray(insertionSortedArrayTwo);
+        System.out.println("It took " + (timeArrayTwoInsertionEnd - 
+                timeArrayTwoInsertionStart) + 
+                " miliseconds to sort arrayTwo with insertionSort Algorithm.");
+        long timeArrayTwoMergeStart = System.nanoTime()/1000;
+        int[] mergeSortedArrayTwo = Object.mergeSort(arrayTwo, 1, 
+                arrayOne.length);
+        long timeArrayTwoMergeEnd = System.nanoTime()/1000;
+        Object.printArray(mergeSortedArrayTwo);
+        System.out.println("It took " + (timeArrayTwoMergeEnd - 
+                timeArrayTwoMergeStart) + 
+                " miliseconds to sort arrayTwo with mergeSort Algorithm.");
+        
     }
     
     void printArray(int[] array){
