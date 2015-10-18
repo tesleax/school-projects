@@ -12,6 +12,7 @@ public class SortingAlgorithms {
         System.out.println("-------------------------------------------- ");
         System.out.println("    1000 sized array sorting times.");
         System.out.println("-------------------------------------------- ");
+        // insertion
         int[] arrayOne = Object.randomArrayCreator(1000);
         long timeArrayOneInsertionStart = System.nanoTime()/1000;
         int[] insertionSortedArrayOne = Object.insertionSort(arrayOne);
@@ -21,6 +22,7 @@ public class SortingAlgorithms {
                 timeArrayOneInsertionStart) + 
                 " miliseconds to sort arrayOne with insertionSort Algorithm.");
         long timeArrayOneMergeStart = System.nanoTime()/1000;
+        // merge
         int[] mergeSortedArrayOne = Object.mergeSort(arrayOne, 1, 
                 arrayOne.length);
         long timeArrayOneMergeEnd = System.nanoTime()/1000;
@@ -28,12 +30,21 @@ public class SortingAlgorithms {
         System.out.println("It took " + (timeArrayOneMergeEnd - 
                 timeArrayOneMergeStart) + 
                 " miliseconds to sort arrayOne with mergeSort Algorithm.");
+        // heap
+        long timeArrayOneHeapStart = System.nanoTime()/1000;
+        int[] heapSortedArrayOne = Object.heapSort(arrayOne);
+        long timeArrayOneHeapEnd = System.nanoTime()/1000;
+        Object.printArray(heapSortedArrayOne);
+        System.out.println("It took " + (timeArrayOneHeapEnd - 
+                timeArrayOneHeapStart) + 
+                " miliseconds to sort arrayOne with heapSort Algorithm.");
         /*
             10000 sized array
         */
         System.out.println("-------------------------------------------- ");
         System.out.println("    10000 sized array sorting times.");
         System.out.println("-------------------------------------------- ");
+        //insert
         int[] arrayTwo = Object.randomArrayCreator(10000);
         long timeArrayTwoInsertionStart = System.nanoTime()/1000;
         int[] insertionSortedArrayTwo = Object.insertionSort(arrayTwo);
@@ -42,6 +53,7 @@ public class SortingAlgorithms {
         System.out.println("It took " + (timeArrayTwoInsertionEnd - 
                 timeArrayTwoInsertionStart) + 
                 " miliseconds to sort arrayTwo with insertionSort Algorithm.");
+        // merge
         long timeArrayTwoMergeStart = System.nanoTime()/1000;
         int[] mergeSortedArrayTwo = Object.mergeSort(arrayTwo, 1, 
                 arrayTwo.length);
@@ -50,6 +62,14 @@ public class SortingAlgorithms {
         System.out.println("It took " + (timeArrayTwoMergeEnd - 
                 timeArrayTwoMergeStart) + 
                 " miliseconds to sort arrayTwo with mergeSort Algorithm.");
+        // heap
+        long timeArrayTwoHeapStart = System.nanoTime()/1000;
+        int[] heapSortedArrayTwo = Object.heapSort(arrayTwo);
+        long timeArrayTwoHeapEnd = System.nanoTime()/1000;
+        Object.printArray(heapSortedArrayTwo);
+        System.out.println("It took " + (timeArrayTwoHeapEnd - 
+                timeArrayTwoHeapStart) + 
+                " miliseconds to sort arrayTwo with heapSort Algorithm.");
         
     }
     
@@ -122,4 +142,45 @@ public class SortingAlgorithms {
         }
         return array;
     }
+    
+    int[] heapSort(int[] array){
+        int size = array.length;
+        buildMaxHeap(array);
+         for (int i = array.length-1; i > 0; i--) {
+             int temp = array[0];
+             array[0] = array[i];
+             array[i] = temp;      
+             size--;
+             maxHeapify(array, 0,size);
+         }
+         return array;
+    }
+    
+    int[] maxHeapify(int[] array, int i,int size){
+        int left = (i+1) * 2 - 1;
+        int right = (i+1) * 2;
+        int largest = i;
+        if(left < size && array[left]>array[i]){
+            largest = left;
+        }
+        if(right < size && array[right]>array[largest]){
+            largest = right;
+        }
+        if(largest != i){
+            int temp = array[i];
+            array[i] = array[largest];
+            array[largest] = temp;
+            maxHeapify(array,largest,size);
+       }
+        return array;
+    }
+    
+    int[] buildMaxHeap(int[] array){
+        for(int i=array.length/2; i>=0; i--){
+            maxHeapify(array, i,array.length);
+        }
+        return array;
+    }
+    
+    
 }
