@@ -13,7 +13,7 @@ public class SortingAlgorithms {
         System.out.println("    1000 sized array sorting times.");
         System.out.println("-------------------------------------------- ");
         // insertion
-        int[] arrayOne = Object.randomArrayCreator(1000000);
+        int[] arrayOne = Object.randomArrayCreator(1000);
         long timeArrayOneInsertionStart = System.nanoTime()/1000;
         int[] insertionSortedArrayOne = Object.insertionSort(arrayOne);
         long timeArrayOneInsertionEnd = System.nanoTime()/1000;
