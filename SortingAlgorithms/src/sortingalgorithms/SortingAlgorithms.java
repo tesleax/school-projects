@@ -13,14 +13,14 @@ public class SortingAlgorithms {
         System.out.println("    1000 sized array sorting times.");
         System.out.println("-------------------------------------------- ");
         // insertion
-        int[] arrayOne = Object.randomArrayCreator(1000);
+        int[] arrayOne = Object.randomArrayCreator(1000000);
         long timeArrayOneInsertionStart = System.nanoTime()/1000;
         int[] insertionSortedArrayOne = Object.insertionSort(arrayOne);
         long timeArrayOneInsertionEnd = System.nanoTime()/1000;
         Object.printArray(insertionSortedArrayOne);
         System.out.println("It took " + (timeArrayOneInsertionEnd - 
                 timeArrayOneInsertionStart) + 
-                " miliseconds to sort arrayOne with insertionSort Algorithm.");
+                " microseconds to sort arrayOne with insertionSort Algorithm.");
         long timeArrayOneMergeStart = System.nanoTime()/1000;
         // merge
         int[] mergeSortedArrayOne = Object.mergeSort(arrayOne, 1, 
@@ -29,7 +29,7 @@ public class SortingAlgorithms {
         Object.printArray(mergeSortedArrayOne);
         System.out.println("It took " + (timeArrayOneMergeEnd - 
                 timeArrayOneMergeStart) + 
-                " miliseconds to sort arrayOne with mergeSort Algorithm.");
+                " microseconds to sort arrayOne with mergeSort Algorithm.");
         // heap
         long timeArrayOneHeapStart = System.nanoTime()/1000;
         int[] heapSortedArrayOne = Object.heapSort(arrayOne);
@@ -37,7 +37,7 @@ public class SortingAlgorithms {
         Object.printArray(heapSortedArrayOne);
         System.out.println("It took " + (timeArrayOneHeapEnd - 
                 timeArrayOneHeapStart) + 
-                " miliseconds to sort arrayOne with heapSort Algorithm.");
+                " microseconds to sort arrayOne with heapSort Algorithm.");
         /*
             10000 sized array
         */
@@ -52,7 +52,7 @@ public class SortingAlgorithms {
         Object.printArray(insertionSortedArrayTwo);
         System.out.println("It took " + (timeArrayTwoInsertionEnd - 
                 timeArrayTwoInsertionStart) + 
-                " miliseconds to sort arrayTwo with insertionSort Algorithm.");
+                " microseconds to sort arrayTwo with insertionSort Algorithm.");
         // merge
         long timeArrayTwoMergeStart = System.nanoTime()/1000;
         int[] mergeSortedArrayTwo = Object.mergeSort(arrayTwo, 1, 
@@ -61,7 +61,7 @@ public class SortingAlgorithms {
         Object.printArray(mergeSortedArrayTwo);
         System.out.println("It took " + (timeArrayTwoMergeEnd - 
                 timeArrayTwoMergeStart) + 
-                " miliseconds to sort arrayTwo with mergeSort Algorithm.");
+                " microseconds to sort arrayTwo with mergeSort Algorithm.");
         // heap
         long timeArrayTwoHeapStart = System.nanoTime()/1000;
         int[] heapSortedArrayTwo = Object.heapSort(arrayTwo);
@@ -69,7 +69,7 @@ public class SortingAlgorithms {
         Object.printArray(heapSortedArrayTwo);
         System.out.println("It took " + (timeArrayTwoHeapEnd - 
                 timeArrayTwoHeapStart) + 
-                " miliseconds to sort arrayTwo with heapSort Algorithm.");
+                " microseconds to sort arrayTwo with heapSort Algorithm.");
         
     }
     
