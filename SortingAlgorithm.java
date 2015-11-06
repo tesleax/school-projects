@@ -11,9 +11,11 @@ public class SortingAlgorithm {
          */
         Object.averageAll(10, 100000);
         Object.averageAll(10, 10000);
+        Object.averageAll(10, 1000);
+        Object.averageAll(10, 100);
     }
 
- /*   void printArray(int[] array){
+ /* void printArray(int[] array){
         System.out.print("[");
         for(int i=0; i<array.length-1 ; i++){
             System.out.print(array[i] + ",");
@@ -22,11 +24,11 @@ public class SortingAlgorithm {
         System.out.println("]");
     }*/
 
-	/*
-		randomArrayCreator takes size of the array and it gives 
-		array with random integers which have value within 100.
-		randomArrayCreator : sizeOfArray -> int[] unSortedArrayWithRandomIntegers
-	*/
+    /*
+    randomArrayCreator takes size of the array and it gives
+    array with random integers which have value within 100.
+    randomArrayCreator : sizeOfArray -> int[] unSortedArrayWithRandomIntegers
+    */
     int[] randomArrayCreator(int n) {
         int[] array = new int[n];
         Random A = new Random();
@@ -35,13 +37,14 @@ public class SortingAlgorithm {
         }
         return array;
     }
-	/*
-		insertionSort takes unsortedArray and gives basically like 
-		every other algorithm. It has  1 for and inside of for loop 1 while loop.
-		So,	it makes this algoritm slower than other algorithm like merge and 
-		heap.(and also Java L2 Cache Problem makes it slower) 
-		insertionSort : int[] unsortedArray -> int[] sortedArray
-	*/
+
+    /*
+    insertionSort takes unsortedArray and gives basically like
+    every other algorithm. It has  1 for and inside of for loop 1 while loop.
+    So,	it makes this algoritm slower than other algorithm like merge and
+    heap.(and also Java L2 Cache Problem makes it slower)
+    insertionSort : int[] unsortedArray -> int[] sortedArray
+    */
     int[] insertionSort(int[] unsortedArray) {
         int temp;
         int i;
@@ -56,10 +59,13 @@ public class SortingAlgorithm {
         }
         return unsortedArray;
     }
-	/*
-		merge method takes sorted unsortedArray, beginning, middle and 
-		final point. Taking these points 
-	*/
+
+    /*
+    merge method takes array, beginning, middle and	final point.
+    Firstly, this method cuts array two pieces array[q-p+1] and
+    array[r-q]. after that, It combines these two sub array with
+    under favour of taking these points.
+    */
     int[] merge(int[] array, int p, int q, int r) {
         int n1 = q - p + 1;
         int n2 = r - q;
@@ -87,6 +93,14 @@ public class SortingAlgorithm {
         return array;
     }
 
+		/*
+        mergeSort takes array, beginning and final point. It checks
+		beginning's value lower than final or not. It divides to 
+		pieces with
+			 int q = (p+r) / 2; 
+		line. Because we're using q in mergeSort.
+		*/
+
     int[] mergeSort(int[] array, int p, int r) {
         if (p < r) {
             int q = (p + r) / 2;
@@ -97,6 +111,11 @@ public class SortingAlgorithm {
         return array;
     }
 
+    /*
+    Firstly,it swaps first with last element with favour of temp
+    decreasing size to hold maximum value and we will not apply
+    anything on max value.
+    */
     int[] heapSort(int[] array) {
         int size = array.length;
         buildMaxHeap(array);
@@ -110,6 +129,10 @@ public class SortingAlgorithm {
         return array;
     }
 
+    /*
+    this method will be used unless it finds the maximum value. Because
+    there is recursive call if it couldnt find largest value.
+    */
     int[] maxHeapify(int[] array, int i, int size) {
         int left = (i + 1) * 2 - 1;
         int right = (i + 1) * 2;
@@ -129,6 +152,12 @@ public class SortingAlgorithm {
         return array;
     }
 
+    /*
+    to create array with order as much as possible, it goes to every node
+    which is important for us and swapping them in a greater way.But it does
+    not sort the array. It just determine where is the largest value and
+    smallest value.
+    */
     int[] buildMaxHeap(int[] array) {
         for (int i = array.length / 2; i >= 0; i--) {
             maxHeapify(array, i, array.length);
@@ -136,6 +165,11 @@ public class SortingAlgorithm {
         return array;
     }
 
+    /*
+    averageAll method takes iteration(to make comparision in scientific way)
+    and sizeOfUnsortedArray. It gives us report about to time which it takes
+    to sort in String Type. We're using "for loop" for iterating algorithms.
+    */
     void averageAll(int n, int size) {
         System.out.println("-------------------------------------------- ");
         System.out.println("    " + size + " sized array sorting times.");
@@ -168,4 +202,3 @@ public class SortingAlgorithm {
                 " microseconds to sort arrayOne with heapSort Algorithm in average.");
     }
 }
-
